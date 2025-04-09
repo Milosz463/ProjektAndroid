@@ -12,7 +12,7 @@
     <ImageView
         android:id="@+id/imageView7"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="50dp"
         app:srcCompat="@drawable/poker" />
 
     <LinearLayout
@@ -23,7 +23,7 @@
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:padding="15dp"
@@ -36,26 +36,32 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="150dp"
-            android:layout_weight="1"
-            android:padding="10dp"
-           android:background="@drawable/ramka"
-            tools:srcCompat="@tools:sample/avatars" />
+            android:id="@+id/imageView10"
+            android:layout_width="150dp"
+            android:layout_height="90dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/ramka"
+            app:srcCompat="@drawable/odwortkarty" />
 
         <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="wrap_content"
-            android:layout_height="150dp"
-            android:layout_weight="1"
+            android:id="@+id/imageView11"
+            android:layout_width="150dp"
+            android:layout_height="90dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/ramka"
-            android:padding="10dp"
-            tools:srcCompat="@tools:sample/avatars" />
+            app:srcCompat="@drawable/odwortkarty" />
     </LinearLayout>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginBottom="6dp"
+        android:background="#A62424" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -63,33 +69,89 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/imageView"
             android:layout_width="wrap_content"
-            android:layout_height="150dp"
+            android:layout_height="120dp"
             android:layout_weight="1"
             android:padding="10dp"
-            android:background="@drawable/ramka"
-            tools:srcCompat="@tools:sample/avatars" />
+           android:background="@drawable/ramka"
+            app:srcCompat="@drawable/odwortkarty" />
 
         <ImageView
-            android:id="@+id/imageView5"
+            android:id="@+id/imageView3"
             android:layout_width="wrap_content"
-            android:layout_height="150dp"
+            android:layout_height="120dp"
             android:layout_weight="1"
-            android:padding="10dp"
             android:background="@drawable/ramka"
-            tools:srcCompat="@tools:sample/avatars" />
+            android:padding="10dp"
+            app:srcCompat="@drawable/odwortkarty" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="120dp"
+            android:layout_weight="1"
+            android:background="@drawable/ramka"
+            android:padding="10dp"
+            app:srcCompat="@drawable/odwortkarty" />
 
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="200dp"
-        android:layout_height="150dp"
-        android:padding="10dp"
-        android:layout_gravity="center"
-        android:background="@drawable/ramka"
-        tools:srcCompat="@tools:sample/avatars" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="150dp"
+            android:layout_height="120dp"
+            android:background="@drawable/ramka"
+            android:padding="10dp"
+            app:srcCompat="@drawable/odwortkarty" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="150dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ramka"
+            android:padding="10dp"
+            app:srcCompat="@drawable/odwortkarty" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_marginTop="6dp"
+        android:layout_height="2dp"
+        android:background="#A62424"
+        ></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="150dp"
+            android:layout_height="90dp"
+            android:background="@drawable/ramka"
+           android:layout_marginTop="10dp"
+            app:srcCompat="@drawable/odwortkarty" />
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="150dp"
+            android:layout_height="90dp"
+            android:background="@drawable/ramka"
+            android:layout_marginTop="10dp"
+            app:srcCompat="@drawable/odwortkarty" />
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/button12"
