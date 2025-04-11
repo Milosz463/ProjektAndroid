@@ -17,10 +17,10 @@ import java.util.ArrayList;
 
 public class DzialanieGryActivity2 extends AppCompatActivity {
 ActivityDzialanieGry2Binding binding;
-TaliaKart taliaKart;
-int losowaKarta1;
-int losowaKarta2;
-ArrayList<Integer> listaZTalia=new ArrayList<Integer>();
+ArrayList<Integer>listaWylosowanychKartNaStol=new ArrayList<>();
+int losowaKarta1=(int)(Math.random()*52);
+int losowaKarta2=(int)(Math.random()*52);
+int losowaKarta3=(int)(Math.random()*52);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,20 +40,27 @@ ArrayList<Integer> listaZTalia=new ArrayList<Integer>();
                     @Override
                     public void onClick(View v) {
                         LosujKartyDlaGracza();
+                        LosujKartyNaStol();
                         binding.button12.setVisibility(INVISIBLE);
                     }
                 }
         );
     }
     public void LosujKartyDlaGracza(){
-        taliaKart=new TaliaKart();
+        Gracz gracz=new Gracz();
+        gracz.losujKartyDlaGracza();
+            binding.imageView8.setImageResource(gracz.wylosowaneKartyGracza.get(0));
+            binding.imageView9.setImageResource(gracz.wylosowaneKartyGracza.get(1));
+
+    }
+    public void LosujKartyNaStol(){
+        TaliaKart taliaKart=new TaliaKart();
         taliaKart.DodajKarty();
-        for(Repozytorium karty:taliaKart.listaKart){
-            listaZTalia.add(karty.getNrKarty());
+        for(Repozytorium repozytorium:taliaKart.listaKart){
+            listaWylosowanychKartNaStol.add(repozytorium.getNrKarty());
         }
-        losowaKarta1=(int)(Math.random()*53);
-        losowaKarta2=(int)(Math.random()*53);
-        binding.imageView8.setImageResource(listaZTalia.get(losowaKarta1));
-        binding.imageView9.setImageResource(listaZTalia.get(losowaKarta2));
+        binding.imageView.setImageResource(listaWylosowanychKartNaStol.get(losowaKarta1));
+        binding.imageView3.setImageResource(listaWylosowanychKartNaStol.get(losowaKarta2));
+        binding.imageView4.setImageResource(listaWylosowanychKartNaStol.get(losowaKarta3));
     }
 }
