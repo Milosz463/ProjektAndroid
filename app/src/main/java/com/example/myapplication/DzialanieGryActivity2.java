@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import static android.view.View.INVISIBLE;
+import static android.view.View.VISIBLE;
 
 import android.os.Bundle;
 import android.view.View;
@@ -34,7 +35,7 @@ int losowaKarta3=(int)(Math.random()*52);
         binding=ActivityDzialanieGry2Binding.inflate(getLayoutInflater());
         View view=binding.getRoot();
         setContentView(view);
-
+        UkryjPrzyciski();
         binding.button12.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -42,9 +43,19 @@ int losowaKarta3=(int)(Math.random()*52);
                         LosujKartyDlaGracza();
                         LosujKartyNaStol();
                         binding.button12.setVisibility(INVISIBLE);
+                        binding.button8.setVisibility(VISIBLE);
+                        binding.button9.setVisibility(VISIBLE);
+                        binding.button10.setVisibility(VISIBLE);
+                        binding.button11.setVisibility(VISIBLE);
                     }
                 }
         );
+    }
+    public void UkryjPrzyciski(){
+        binding.button8.setVisibility(INVISIBLE);
+        binding.button9.setVisibility(INVISIBLE);
+        binding.button10.setVisibility(INVISIBLE);
+        binding.button11.setVisibility(INVISIBLE);
     }
     public void LosujKartyDlaGracza(){
         Gracz gracz=new Gracz();
