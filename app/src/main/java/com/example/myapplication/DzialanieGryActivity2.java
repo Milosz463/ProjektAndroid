@@ -4,6 +4,7 @@ import static android.view.View.INVISIBLE;
 import static android.view.View.VISIBLE;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 
 import androidx.activity.EdgeToEdge;
@@ -22,8 +23,13 @@ ArrayList<Integer>listaWylosowanychKartNaStol=new ArrayList<>();
 int losowaKarta1=(int)(Math.random()*52);
 int losowaKarta2=(int)(Math.random()*52);
 int losowaKarta3=(int)(Math.random()*52);
+int losowaKarta4=(int)(Math.random()*52);
+int losowaKarta5=(int)(Math.random()*52);
+int etapRozdania=0;
+CountDownTimer countDownTimer;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_dzialanie_gry2);
@@ -41,17 +47,68 @@ int losowaKarta3=(int)(Math.random()*52);
                     @Override
                     public void onClick(View v) {
                         LosujKartyDlaGracza();
-                        LosujKartyNaStol();
+                        Flop();
                         binding.button12.setVisibility(INVISIBLE);
                         binding.button8.setVisibility(VISIBLE);
                         binding.button9.setVisibility(VISIBLE);
                         binding.button10.setVisibility(VISIBLE);
                         binding.button11.setVisibility(VISIBLE);
+
+                    }
+                }
+        );
+        binding.button8.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+
+                    }
+                }
+        );
+        binding.button9.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+
+                    }
+                }
+        );
+        binding.button10.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+
+                    }
+                }
+        );
+        binding.button11.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                }
+        );
+        binding.button2.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        etapRozdania++;
+                        if(etapRozdania!=1){
+                            River();
+                        }else {
+                            Turn();
+                        }
                     }
                 }
         );
     }
     public void UkryjPrzyciski(){
+        //binding.button2.setVisibility(INVISIBLE);
+        //binding.button3.setVisibility(INVISIBLE);
         binding.button8.setVisibility(INVISIBLE);
         binding.button9.setVisibility(INVISIBLE);
         binding.button10.setVisibility(INVISIBLE);
@@ -64,7 +121,7 @@ int losowaKarta3=(int)(Math.random()*52);
             binding.imageView9.setImageResource(gracz.wylosowaneKartyGracza.get(1));
 
     }
-    public void LosujKartyNaStol(){
+    public void Flop(){
         TaliaKart taliaKart=new TaliaKart();
         taliaKart.DodajKarty();
         for(Repozytorium repozytorium:taliaKart.listaKart){
@@ -73,5 +130,15 @@ int losowaKarta3=(int)(Math.random()*52);
         binding.imageView.setImageResource(listaWylosowanychKartNaStol.get(losowaKarta1));
         binding.imageView3.setImageResource(listaWylosowanychKartNaStol.get(losowaKarta2));
         binding.imageView4.setImageResource(listaWylosowanychKartNaStol.get(losowaKarta3));
+    }
+    public void Turn(){
+        binding.imageView5.setImageResource(listaWylosowanychKartNaStol.get(losowaKarta4));
+        binding.button2.setVisibility(VISIBLE);
+        binding.button3.setVisibility(VISIBLE);
+    }
+    public void River(){
+        binding.imageView6.setImageResource(listaWylosowanychKartNaStol.get(losowaKarta5));
+        binding.button2.setVisibility(VISIBLE);
+        binding.button3.setVisibility(VISIBLE);
     }
 }
