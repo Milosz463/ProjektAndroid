@@ -33,6 +33,13 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="Krupier" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -129,19 +136,18 @@
         android:background="#A62424"
         ></View>
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="Gracz" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="#A62424"
-            android:text="call" />
 
         <ImageView
             android:id="@+id/imageView8"
@@ -159,6 +165,21 @@
             android:layout_marginTop="10dp"
             app:srcCompat="@drawable/odwortkarty" />
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/black"
+            android:text="call" />
+
         <Button
             android:id="@+id/button3"
             android:layout_width="wrap_content"
@@ -166,17 +187,7 @@
             android:layout_weight="1"
             android:backgroundTint="#A62424"
             android:text="raise" />
-
     </LinearLayout>
-
-    <Button
-        android:id="@+id/button12"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="5dp"
-        android:backgroundTint="#A62424"
-        android:text="Start" />
 
     <LinearLayout
         android:layout_width="match_parent"

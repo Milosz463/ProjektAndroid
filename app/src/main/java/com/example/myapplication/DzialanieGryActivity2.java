@@ -15,7 +15,9 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.myapplication.databinding.ActivityDzialanieGry2Binding;
 
+import java.security.Policy;
 import java.util.ArrayList;
+import java.util.zip.ZipInputStream;
 
 public class DzialanieGryActivity2 extends AppCompatActivity {
 ActivityDzialanieGry2Binding binding;
@@ -27,6 +29,8 @@ int losowaKarta4=(int)(Math.random()*52);
 int losowaKarta5=(int)(Math.random()*52);
 int etapRozdania=0;
 CountDownTimer countDownTimer;
+boolean czyRaiseZostanieWykonany=false;
+boolean czyJuzWylosowalKarty=false;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -41,28 +45,21 @@ CountDownTimer countDownTimer;
         binding=ActivityDzialanieGry2Binding.inflate(getLayoutInflater());
         View view=binding.getRoot();
         setContentView(view);
-        UkryjPrzyciski();
-        binding.button12.setOnClickListener(
+
+        binding.button2.setVisibility(INVISIBLE);
+        binding.button3.setVisibility(INVISIBLE);
+
+        binding.button8.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         LosujKartyDlaGracza();
                         Flop();
-                        binding.button12.setVisibility(INVISIBLE);
-                        binding.button8.setVisibility(VISIBLE);
-                        binding.button9.setVisibility(VISIBLE);
-                        binding.button10.setVisibility(VISIBLE);
-                        binding.button11.setVisibility(VISIBLE);
-
-                    }
-                }
-        );
-        binding.button8.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-
+                        UkryjPrzyciski();
+                        if(!czyRaiseZostanieWykonany) {
+                            Raise();
+                            czyRaiseZostanieWykonany=true;
+                        }
                     }
                 }
         );
@@ -70,8 +67,13 @@ CountDownTimer countDownTimer;
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
-
+                        LosujKartyDlaGracza();
+                        Flop();
+                        UkryjPrzyciski();
+                        if(!czyRaiseZostanieWykonany) {
+                            Raise();
+                            czyRaiseZostanieWykonany=true;
+                        }
                     }
                 }
         );
@@ -79,8 +81,13 @@ CountDownTimer countDownTimer;
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
-
+                        LosujKartyDlaGracza();
+                        Flop();
+                        UkryjPrzyciski();
+                        if(!czyRaiseZostanieWykonany) {
+                            Raise();
+                            czyRaiseZostanieWykonany=true;
+                        }
                     }
                 }
         );
@@ -88,7 +95,13 @@ CountDownTimer countDownTimer;
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
+                        LosujKartyDlaGracza();
+                        Flop();
+                        UkryjPrzyciski();
+                        if(!czyRaiseZostanieWykonany) {
+                            Raise();
+                            czyRaiseZostanieWykonany=true;
+                        }
                     }
                 }
         );
@@ -96,30 +109,49 @@ CountDownTimer countDownTimer;
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        Raise();
                         etapRozdania++;
                         if(etapRozdania!=1){
                             River();
                         }else {
                             Turn();
-                        }
+                            UkryjPrzyciski();
+                        };
+                        UkryjPrzyciski();
+                    }
+                }
+        );
+        binding.button3.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        PokazPrzyciski();
                     }
                 }
         );
     }
     public void UkryjPrzyciski(){
-        //binding.button2.setVisibility(INVISIBLE);
-        //binding.button3.setVisibility(INVISIBLE);
+        binding.button2.setVisibility(INVISIBLE);
+        binding.button3.setVisibility(INVISIBLE);
         binding.button8.setVisibility(INVISIBLE);
         binding.button9.setVisibility(INVISIBLE);
         binding.button10.setVisibility(INVISIBLE);
         binding.button11.setVisibility(INVISIBLE);
     }
+    public void PokazPrzyciski(){
+        binding.button8.setVisibility(VISIBLE);
+        binding.button9.setVisibility(VISIBLE);
+        binding.button10.setVisibility(VISIBLE);
+        binding.button11.setVisibility(VISIBLE);
+    }
     public void LosujKartyDlaGracza(){
-        Gracz gracz=new Gracz();
-        gracz.losujKartyDlaGracza();
+        if(!czyJuzWylosowalKarty) {
+            Gracz gracz = new Gracz();
+            gracz.losujKartyDlaGracza();
+            czyJuzWylosowalKarty=true;
             binding.imageView8.setImageResource(gracz.wylosowaneKartyGracza.get(0));
             binding.imageView9.setImageResource(gracz.wylosowaneKartyGracza.get(1));
-
+        }
     }
     public void Flop(){
         TaliaKart taliaKart=new TaliaKart();
@@ -133,12 +165,27 @@ CountDownTimer countDownTimer;
     }
     public void Turn(){
         binding.imageView5.setImageResource(listaWylosowanychKartNaStol.get(losowaKarta4));
-        binding.button2.setVisibility(VISIBLE);
-        binding.button3.setVisibility(VISIBLE);
     }
     public void River(){
-        binding.imageView6.setImageResource(listaWylosowanychKartNaStol.get(losowaKarta5));
-        binding.button2.setVisibility(VISIBLE);
-        binding.button3.setVisibility(VISIBLE);
+        binding.imageView6.setImageResource(listaWylosowanychKartNaStol.get(losowaKarta5));;
+    }
+    public void Raise(){
+        if(etapRozdania<1) {
+            countDownTimer = new CountDownTimer(10000, 10000) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    binding.button3.setVisibility(VISIBLE);
+                }
+
+                @Override
+                public void onFinish() {
+                    UkryjPrzyciski();
+                    binding.button2.setVisibility(VISIBLE);
+                }
+            };
+            countDownTimer.start();
+        }else{
+            UkryjPrzyciski();
+        }
     }
 }

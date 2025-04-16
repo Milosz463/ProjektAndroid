@@ -6,10 +6,10 @@ public class Gracz {
     ArrayList<Integer> listaZTaliaGracza =new ArrayList<Integer>();
     ArrayList<Integer> wylosowaneKartyGracza =new ArrayList<>();
     ArrayList<Integer> listaWartosciKartGracza=new ArrayList<>();
-    int wartoscKarty1Gracza;
-    int wartroscKarty2Gracza;
     int losowaKarta1 = (int) (Math.random() * 52);
     int losowaKarta2 = (int) (Math.random() * 52);
+    int wartoscKarty1Gracza;
+    int wartroscKarty2Gracza;
     TaliaKart taliaKart;
     public void losujKartyDlaGracza(){
         taliaKart=new TaliaKart();
