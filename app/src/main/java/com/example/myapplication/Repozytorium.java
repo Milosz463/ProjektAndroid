@@ -5,11 +5,12 @@ import java.util.ArrayList;
 public class Repozytorium {
     Integer nrKarty;
     int wartoscKarty;
-    ArrayList<Repozytorium>listaKart=new ArrayList<>();
+    int kolorKarty;
 
-    public Repozytorium(Integer nrKarty, int wartoscKarty) {
+    public Repozytorium(Integer nrKarty, int wartoscKarty, int kolorKarty) {
         this.nrKarty = nrKarty;
         this.wartoscKarty = wartoscKarty;
+        this.kolorKarty = kolorKarty;
     }
 
     public Repozytorium() {
@@ -29,5 +30,13 @@ public class Repozytorium {
 
     public void setWartoscKarty(int wartoscKarty) {
         this.wartoscKarty = wartoscKarty;
+    }
+
+    public int getKolorKarty() {
+        return kolorKarty;
+    }
+
+    public void setKolorKarty(int kolorKarty) {
+        this.kolorKarty = kolorKarty;
     }
 }

@@ -15,9 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.myapplication.databinding.ActivityDzialanieGry2Binding;
 
-import java.security.Policy;
 import java.util.ArrayList;
-import java.util.zip.ZipInputStream;
 
 public class DzialanieGryActivity2 extends AppCompatActivity {
 ActivityDzialanieGry2Binding binding;
@@ -30,7 +28,10 @@ int losowaKarta5=(int)(Math.random()*52);
 int etapRozdania=0;
 CountDownTimer countDownTimer;
 boolean czyRaiseZostanieWykonany=false;
-boolean czyJuzWylosowalKarty=false;
+boolean czyGraczJuzWylosowalKarty =false;
+boolean czyKrupierJuzWylosowalKarty=false;
+Krupier krupier;
+Gracz gracz;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -54,6 +55,7 @@ boolean czyJuzWylosowalKarty=false;
                     @Override
                     public void onClick(View v) {
                         LosujKartyDlaGracza();
+                        LosujKartyDlaKrupiera();
                         Flop();
                         UkryjPrzyciski();
                         if(!czyRaiseZostanieWykonany) {
@@ -68,6 +70,7 @@ boolean czyJuzWylosowalKarty=false;
                     @Override
                     public void onClick(View v) {
                         LosujKartyDlaGracza();
+                        LosujKartyDlaKrupiera();
                         Flop();
                         UkryjPrzyciski();
                         if(!czyRaiseZostanieWykonany) {
@@ -82,6 +85,7 @@ boolean czyJuzWylosowalKarty=false;
                     @Override
                     public void onClick(View v) {
                         LosujKartyDlaGracza();
+                        LosujKartyDlaKrupiera();
                         Flop();
                         UkryjPrzyciski();
                         if(!czyRaiseZostanieWykonany) {
@@ -96,6 +100,7 @@ boolean czyJuzWylosowalKarty=false;
                     @Override
                     public void onClick(View v) {
                         LosujKartyDlaGracza();
+                        LosujKartyDlaKrupiera();
                         Flop();
                         UkryjPrzyciski();
                         if(!czyRaiseZostanieWykonany) {
@@ -111,13 +116,14 @@ boolean czyJuzWylosowalKarty=false;
                     public void onClick(View v) {
                         Raise();
                         etapRozdania++;
-                        if(etapRozdania!=1){
+                        if(etapRozdania% 2 == 0){
                             River();
+                            binding.imageView10.setImageResource(krupier.wylosowaneKartyKrupiera.get(0));
+                            binding.imageView11.setImageResource(krupier.wylosowaneKartyKrupiera.get(1));
                         }else {
                             Turn();
                             UkryjPrzyciski();
                         };
-                        UkryjPrzyciski();
                     }
                 }
         );
@@ -145,12 +151,19 @@ boolean czyJuzWylosowalKarty=false;
         binding.button11.setVisibility(VISIBLE);
     }
     public void LosujKartyDlaGracza(){
-        if(!czyJuzWylosowalKarty) {
-            Gracz gracz = new Gracz();
+        if(!czyGraczJuzWylosowalKarty) {
+            gracz = new Gracz();
             gracz.losujKartyDlaGracza();
-            czyJuzWylosowalKarty=true;
+            czyGraczJuzWylosowalKarty =true;
             binding.imageView8.setImageResource(gracz.wylosowaneKartyGracza.get(0));
             binding.imageView9.setImageResource(gracz.wylosowaneKartyGracza.get(1));
+        }
+    }
+    public void LosujKartyDlaKrupiera(){
+        if(!czyKrupierJuzWylosowalKarty){
+            krupier=new Krupier();
+            krupier.losujKartyDlaKrupiera();
+            czyKrupierJuzWylosowalKarty =true;
         }
     }
     public void Flop(){
