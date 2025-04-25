@@ -194,7 +194,7 @@ LogikaGry logikaGry;
     }
     public void Raise(){
         if(etapRozdania<1) {
-            countDownTimer = new CountDownTimer(10000, 10000) {
+            countDownTimer = new CountDownTimer(5000, 10000) {
                 @Override
                 public void onTick(long millisUntilFinished) {
                     binding.button3.setVisibility(VISIBLE);
@@ -212,14 +212,22 @@ LogikaGry logikaGry;
         }
     }
     public void SprawdzWyniki(){
-        logikaGry=new LogikaGry();
+        logikaGry=new LogikaGry(gracz,krupier,stolik);
+        logikaGry.gracz = this.gracz;
+        logikaGry.krupier = this.krupier;
+        logikaGry.stolik = this.stolik;
+
+        gracz.dodajWartosciKartGracza();
+        krupier.dodajWartosciKartKrupiera();
+        stolik.dodajWartosciKartNaStol();
+
         logikaGry.LiczPunktyGracza();
-        logikaGry.LiczPunkrtKrupiera();
+        logikaGry.LiczPunktyKrupiera();
         if(gracz.getWynikGracza()>krupier.getWynikKrupiera()){
-            binding.textView.setText("Simga");
+            binding.textView.setText(String.valueOf(gracz.getWynikGracza()+"gracz"));
         }
-        if(gracz.getWynikGracza()<krupier.getWynikKrupiera()){
-            binding.textView.setText("Ligma");
+        else if(gracz.getWynikGracza()<krupier.getWynikKrupiera()){
+            binding.textView.setText(String.valueOf(krupier.getWynikKrupiera()+"krupier"));
         }else{
             binding.textView.setText("remis");
         }

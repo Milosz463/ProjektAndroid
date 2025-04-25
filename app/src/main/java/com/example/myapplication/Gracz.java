@@ -6,7 +6,7 @@ public class Gracz {
     ArrayList<Integer> listaZTaliaGracza =new ArrayList<Integer>();
     ArrayList<Integer> wylosowaneKartyGracza =new ArrayList<>();
     ArrayList<Integer> listaWartosciKartGracza=new ArrayList<>();
-    ArrayList<Integer>listaKolorowKartKrupiera=new ArrayList<>();
+    ArrayList<Integer> listaKolorowKartGracza=new ArrayList<>();
     int losowaKarta1 = (int) (Math.random() * 52);
     int losowaKarta2 = (int) (Math.random() * 52);
     int wartoscKarty1Gracza;
@@ -54,12 +54,12 @@ public class Gracz {
         taliaKart.DodajKarty();
         for(Repozytorium wartosciG:taliaKart.listaKart){
             listaWartosciKartGracza.add(wartosciG.getWartoscKarty());
-            listaKolorowKartKrupiera.add(wartosciG.getKolorKarty());
+            listaKolorowKartGracza.add(wartosciG.getKolorKarty());
         }
             wartoscKarty1Gracza=listaWartosciKartGracza.get(losowaKarta1);
             wartroscKarty2Gracza=listaWartosciKartGracza.get(losowaKarta2);
-            kolorKarty1Gracza =listaKolorowKartKrupiera.get(losowaKarta1);
-            kolorKarty2Gracza =listaKolorowKartKrupiera.get(losowaKarta2);
+            kolorKarty1Gracza = listaKolorowKartGracza.get(losowaKarta1);
+            kolorKarty2Gracza = listaKolorowKartGracza.get(losowaKarta2);
     }
 
 }

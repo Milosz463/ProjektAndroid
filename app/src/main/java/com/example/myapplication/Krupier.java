@@ -7,12 +7,12 @@ public class Krupier {
     ArrayList<Integer> wylosowaneKartyKrupiera=new ArrayList<>();
     ArrayList<Integer> listaWartosciKartKrupiera=new ArrayList<>();
     ArrayList<Integer> listaKolorowKartKrupiera=new ArrayList<>();
+    int losowaKarta1=(int)(Math.random()*52);
+    int losowaKarta2=(int)(Math.random()*52);
     int wartoscKarty1Krupiera;
     int wartoscKarty2Krupiera;
     int kolorKarty1Krupiera;
     int kolorKarty2Krupiera;
-    int losowaKarta1=(int)(Math.random()*52);
-    int losowaKarta2=(int)(Math.random()*52);
     int wynikKrupiera;
     TaliaKart taliaKart;
 
@@ -57,8 +57,8 @@ public class Krupier {
             listaKolorowKartKrupiera.add(wartosciK.getKolorKarty());
         }
 
-            wartoscKarty1Krupiera=listaZtaliaKrupiera.get(losowaKarta1);
-            wartoscKarty2Krupiera=listaZtaliaKrupiera.get(losowaKarta2);
+            wartoscKarty1Krupiera=listaWartosciKartKrupiera.get(losowaKarta1);
+            wartoscKarty2Krupiera=listaWartosciKartKrupiera.get(losowaKarta2);
             kolorKarty1Krupiera=listaKolorowKartKrupiera.get(losowaKarta1);
             kolorKarty2Krupiera=listaKolorowKartKrupiera.get(losowaKarta2);
     }
