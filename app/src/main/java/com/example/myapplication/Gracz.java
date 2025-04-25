@@ -11,8 +11,9 @@ public class Gracz {
     int losowaKarta2 = (int) (Math.random() * 52);
     int wartoscKarty1Gracza;
     int wartroscKarty2Gracza;
-    int kolorKarty1Krupiera;
-    int kolorKarty2Krupiera;
+    int kolorKarty1Gracza;
+    int kolorKarty2Gracza;
+    int wynikGracza;
     TaliaKart taliaKart;
 
     public int getWartoscKarty1Gracza() {
@@ -23,12 +24,20 @@ public class Gracz {
         return wartroscKarty2Gracza;
     }
 
-    public int getKolorKarty1Krupiera() {
-        return kolorKarty1Krupiera;
+    public int getKolorKarty1Gracza() {
+        return kolorKarty1Gracza;
     }
 
-    public int getKolorKarty2Krupiera() {
-        return kolorKarty2Krupiera;
+    public int getKolorKarty2Gracza() {
+        return kolorKarty2Gracza;
+    }
+
+    public int getWynikGracza() {
+        return wynikGracza;
+    }
+
+    public void setWynikGracza(int wynikGracza) {
+        this.wynikGracza = wynikGracza;
     }
 
     public void losujKartyDlaGracza(){
@@ -49,8 +58,8 @@ public class Gracz {
         }
             wartoscKarty1Gracza=listaWartosciKartGracza.get(losowaKarta1);
             wartroscKarty2Gracza=listaWartosciKartGracza.get(losowaKarta2);
-            kolorKarty1Krupiera=listaKolorowKartKrupiera.get(losowaKarta1);
-            kolorKarty2Krupiera=listaKolorowKartKrupiera.get(losowaKarta2);
+            kolorKarty1Gracza =listaKolorowKartKrupiera.get(losowaKarta1);
+            kolorKarty2Gracza =listaKolorowKartKrupiera.get(losowaKarta2);
     }
 
 }

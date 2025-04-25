@@ -13,6 +13,7 @@ public class Krupier {
     int kolorKarty2Krupiera;
     int losowaKarta1=(int)(Math.random()*52);
     int losowaKarta2=(int)(Math.random()*52);
+    int wynikKrupiera;
     TaliaKart taliaKart;
 
     public int getWartoscKarty1Krupiera() {
@@ -29,6 +30,14 @@ public class Krupier {
 
     public int getKolorKarty2Krupiera() {
         return kolorKarty2Krupiera;
+    }
+
+    public int getWynikKrupiera() {
+        return wynikKrupiera;
+    }
+
+    public void setWynikKrupiera(int wynikKrupiera) {
+        this.wynikKrupiera = wynikKrupiera;
     }
 
     public void losujKartyDlaKrupiera(){

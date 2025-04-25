@@ -15,23 +15,31 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.myapplication.databinding.ActivityDzialanieGry2Binding;
 
-import java.util.ArrayList;
-
 public class DzialanieGryActivity2 extends AppCompatActivity {
 ActivityDzialanieGry2Binding binding;
-ArrayList<Integer>listaWylosowanychKartNaStol=new ArrayList<>();
-int losowaKarta1=(int)(Math.random()*52);
-int losowaKarta2=(int)(Math.random()*52);
-int losowaKarta3=(int)(Math.random()*52);
-int losowaKarta4=(int)(Math.random()*52);
-int losowaKarta5=(int)(Math.random()*52);
+//ArrayList<Integer>listaWylosowanychKartNaStol=new ArrayList<>();
+//ArrayList<Integer>listaWylosowanychWartosciKartNaStole=new ArrayList<>();
+//int losowaKarta1=(int)(Math.random()*52);
+//int losowaKarta2=(int)(Math.random()*52);
+//int losowaKarta3=(int)(Math.random()*52);
+//int losowaKarta4=(int)(Math.random()*52);
+//int losowaKarta5=(int)(Math.random()*52);
 int etapRozdania=0;
 CountDownTimer countDownTimer;
 boolean czyRaiseZostanieWykonany=false;
 boolean czyGraczJuzWylosowalKarty =false;
 boolean czyKrupierJuzWylosowalKarty=false;
+boolean czyWylosowanoKartyNaStol=false;
 Krupier krupier;
 Gracz gracz;
+Stolik stolik;
+LogikaGry logikaGry;
+//int wartosc1Flop;
+//int wartosc2Flop;
+//int wartosc3Flop;
+//int wartoscTurn;
+//int wartoscRiver;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -120,6 +128,7 @@ Gracz gracz;
                             River();
                             binding.imageView10.setImageResource(krupier.wylosowaneKartyKrupiera.get(0));
                             binding.imageView11.setImageResource(krupier.wylosowaneKartyKrupiera.get(1));
+                            SprawdzWyniki();
                         }else {
                             Turn();
                             UkryjPrzyciski();
@@ -131,6 +140,7 @@ Gracz gracz;
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
                         PokazPrzyciski();
                     }
                 }
@@ -167,20 +177,20 @@ Gracz gracz;
         }
     }
     public void Flop(){
-        TaliaKart taliaKart=new TaliaKart();
-        taliaKart.DodajKarty();
-        for(Repozytorium repozytorium:taliaKart.listaKart){
-            listaWylosowanychKartNaStol.add(repozytorium.getNrKarty());
+        if(!czyWylosowanoKartyNaStol) {
+            stolik=new Stolik();
+            stolik.losujKartyNaStol();
+            czyWylosowanoKartyNaStol=true;
+            binding.imageView.setImageResource(stolik.listaWylosowanychKartNaStol.get(0));
+            binding.imageView3.setImageResource(stolik.listaWylosowanychKartNaStol.get(1));
+            binding.imageView4.setImageResource(stolik.listaWylosowanychKartNaStol.get(2));
         }
-        binding.imageView.setImageResource(listaWylosowanychKartNaStol.get(losowaKarta1));
-        binding.imageView3.setImageResource(listaWylosowanychKartNaStol.get(losowaKarta2));
-        binding.imageView4.setImageResource(listaWylosowanychKartNaStol.get(losowaKarta3));
     }
     public void Turn(){
-        binding.imageView5.setImageResource(listaWylosowanychKartNaStol.get(losowaKarta4));
+        binding.imageView5.setImageResource(stolik.listaWylosowanychKartNaStol.get(3));
     }
     public void River(){
-        binding.imageView6.setImageResource(listaWylosowanychKartNaStol.get(losowaKarta5));;
+        binding.imageView6.setImageResource(stolik.listaWylosowanychKartNaStol.get(4));;
     }
     public void Raise(){
         if(etapRozdania<1) {
@@ -199,6 +209,19 @@ Gracz gracz;
             countDownTimer.start();
         }else{
             UkryjPrzyciski();
+        }
+    }
+    public void SprawdzWyniki(){
+        logikaGry=new LogikaGry();
+        logikaGry.LiczPunktyGracza();
+        logikaGry.LiczPunkrtKrupiera();
+        if(gracz.getWynikGracza()>krupier.getWynikKrupiera()){
+            binding.textView.setText("Simga");
+        }
+        if(gracz.getWynikGracza()<krupier.getWynikKrupiera()){
+            binding.textView.setText("Ligma");
+        }else{
+            binding.textView.setText("remis");
         }
     }
 }
