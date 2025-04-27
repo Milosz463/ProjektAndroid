@@ -3,6 +3,7 @@ package com.example.myapplication;
 import static android.view.View.INVISIBLE;
 import static android.view.View.VISIBLE;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -17,14 +18,9 @@ import com.example.myapplication.databinding.ActivityDzialanieGry2Binding;
 
 public class DzialanieGryActivity2 extends AppCompatActivity {
 ActivityDzialanieGry2Binding binding;
-//ArrayList<Integer>listaWylosowanychKartNaStol=new ArrayList<>();
-//ArrayList<Integer>listaWylosowanychWartosciKartNaStole=new ArrayList<>();
-//int losowaKarta1=(int)(Math.random()*52);
-//int losowaKarta2=(int)(Math.random()*52);
-//int losowaKarta3=(int)(Math.random()*52);
-//int losowaKarta4=(int)(Math.random()*52);
-//int losowaKarta5=(int)(Math.random()*52);
+
 int etapRozdania=0;
+int PostawionyBudzet;
 CountDownTimer countDownTimer;
 boolean czyRaiseZostanieWykonany=false;
 boolean czyGraczJuzWylosowalKarty =false;
@@ -34,11 +30,7 @@ Krupier krupier;
 Gracz gracz;
 Stolik stolik;
 LogikaGry logikaGry;
-//int wartosc1Flop;
-//int wartosc2Flop;
-//int wartosc3Flop;
-//int wartoscTurn;
-//int wartoscRiver;
+Przyciski przyciski=new Przyciski();
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -62,6 +54,10 @@ LogikaGry logikaGry;
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        przyciski.setPostawionyBudzet(5);
+                        przyciski.StawPieniadze();
+                        binding.textView.setText("Budżet: "+String.valueOf(przyciski.getBudzet()));
+                        binding.textView4.setText("- "+String.valueOf(przyciski.getPostawionyBudzet()));
                         LosujKartyDlaGracza();
                         LosujKartyDlaKrupiera();
                         Flop();
@@ -77,6 +73,10 @@ LogikaGry logikaGry;
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        przyciski.setPostawionyBudzet(10);
+                        przyciski.StawPieniadze();
+                        binding.textView.setText("Budżet: "+String.valueOf(przyciski.getBudzet()));
+                        binding.textView4.setText("- "+String.valueOf(przyciski.getPostawionyBudzet()));
                         LosujKartyDlaGracza();
                         LosujKartyDlaKrupiera();
                         Flop();
@@ -92,6 +92,10 @@ LogikaGry logikaGry;
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        przyciski.setPostawionyBudzet(15);
+                        przyciski.StawPieniadze();
+                        binding.textView.setText("Budżet: "+String.valueOf(przyciski.getBudzet()));
+                        binding.textView4.setText("- "+String.valueOf(przyciski.getPostawionyBudzet()));
                         LosujKartyDlaGracza();
                         LosujKartyDlaKrupiera();
                         Flop();
@@ -107,6 +111,10 @@ LogikaGry logikaGry;
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        przyciski.setPostawionyBudzet(25);
+                        przyciski.StawPieniadze();
+                        binding.textView.setText("Budżet: "+String.valueOf(przyciski.getBudzet()));
+                        binding.textView4.setText("- "+String.valueOf(przyciski.getPostawionyBudzet()));
                         LosujKartyDlaGracza();
                         LosujKartyDlaKrupiera();
                         Flop();
@@ -128,7 +136,17 @@ LogikaGry logikaGry;
                             River();
                             binding.imageView10.setImageResource(krupier.wylosowaneKartyKrupiera.get(0));
                             binding.imageView11.setImageResource(krupier.wylosowaneKartyKrupiera.get(1));
-                            SprawdzWyniki();
+                            przyciski.SprawdzWyniki();
+                            binding.textView.setText("Budżet: "+String.valueOf(przyciski.getBudzet()));
+                            if(przyciski.czyWygrana==1){
+                                binding.textView4.setText("You win!");
+                                binding.textView4.setTextColor(Color.GREEN);
+                            }else if(przyciski.czyWygrana==2){
+                                binding.textView4.setText("You loose!");
+                                binding.textView4.setTextColor(Color.RED);
+                            }else{
+                                binding.textView4.setText("Draw!");
+                            }
                         }else {
                             Turn();
                             UkryjPrzyciski();
@@ -211,25 +229,5 @@ LogikaGry logikaGry;
             UkryjPrzyciski();
         }
     }
-    public void SprawdzWyniki(){
-        logikaGry=new LogikaGry(gracz,krupier,stolik);
-        logikaGry.gracz = this.gracz;
-        logikaGry.krupier = this.krupier;
-        logikaGry.stolik = this.stolik;
 
-        gracz.dodajWartosciKartGracza();
-        krupier.dodajWartosciKartKrupiera();
-        stolik.dodajWartosciKartNaStol();
-
-        logikaGry.LiczPunktyGracza();
-        logikaGry.LiczPunktyKrupiera();
-        if(gracz.getWynikGracza()>krupier.getWynikKrupiera()){
-            binding.textView.setText(String.valueOf(gracz.getWynikGracza()+"gracz"));
-        }
-        else if(gracz.getWynikGracza()<krupier.getWynikKrupiera()){
-            binding.textView.setText(String.valueOf(krupier.getWynikKrupiera()+"krupier"));
-        }else{
-            binding.textView.setText("remis");
-        }
-    }
 }

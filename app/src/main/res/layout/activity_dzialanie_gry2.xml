@@ -16,7 +16,7 @@
         app:srcCompat="@drawable/poker" />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
@@ -30,6 +30,16 @@
             android:textSize="25dp"
             android:layout_weight="1"
             android:text="Budżet: 1000zł" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:padding="15dp"
+            android:textSize="25dp"
+            android:layout_weight="1" />
 
     </LinearLayout>
 

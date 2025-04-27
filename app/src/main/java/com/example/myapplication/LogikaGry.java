@@ -6,8 +6,6 @@ public class LogikaGry {
     Stolik stolik;
 
     int[] tablicaKartZeStolu;
-    int[]tablicaRiver;
-    int[]tablicaTurn;
 
     public LogikaGry(Gracz gracz, Krupier krupier, Stolik stolik) {
         this.gracz = gracz;
