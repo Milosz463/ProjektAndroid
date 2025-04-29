@@ -13,7 +13,7 @@ public class LogikaGry {
         this.stolik = stolik;
     }
 
-    public void DodajWartosci() {
+    public void dodajWartosci() {
         gracz.dodajWartosciKartGracza();
         krupier.dodajWartosciKartKrupiera();
         stolik.dodajWartosciKartNaStol();
@@ -44,8 +44,8 @@ public class LogikaGry {
         return licznik;
     }
 
-    public void LiczPunktyGracza() {
-        DodajWartosci();
+    public void liczPunktyGracza() {
+        dodajWartosci();
 
         gracz.setWynikGracza(gracz.getWynikGracza() + ileTrafien(tablicaKartZeStolu, gracz.getWartoscKarty1Gracza()));
         gracz.setWynikGracza(gracz.getWynikGracza() + ileTrafien(tablicaKartZeStolu, gracz.getWartroscKarty2Gracza()));
@@ -53,7 +53,7 @@ public class LogikaGry {
         gracz.setWynikGracza(gracz.getWynikGracza() + ileTrafien(tablicaKartZeStolu, gracz.getKolorKarty2Gracza()));
     }
 
-    public void LiczPunktyKrupiera() {
+    public void liczPunktyKrupiera() {
         krupier.setWynikKrupiera(krupier.getWynikKrupiera() + ileTrafien(tablicaKartZeStolu, krupier.getWartoscKarty1Krupiera()));
         krupier.setWynikKrupiera(krupier.getWynikKrupiera() + ileTrafien(tablicaKartZeStolu, krupier.getWartoscKarty2Krupiera()));
         krupier.setWynikKrupiera(krupier.getWynikKrupiera() + ileTrafien(tablicaKartZeStolu, krupier.getKolorKarty1Krupiera()));

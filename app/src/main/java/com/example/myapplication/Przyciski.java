@@ -38,8 +38,8 @@ public class Przyciski {
         krupier.dodajWartosciKartKrupiera();
         stolik.dodajWartosciKartNaStol();
 
-        logikaGry.LiczPunktyGracza();
-        logikaGry.LiczPunktyKrupiera();
+        logikaGry.liczPunktyGracza();
+        logikaGry.liczPunktyKrupiera();
         if(gracz.getWynikGracza()>krupier.getWynikKrupiera()){
             Budzet=Budzet+(PostawionyBudzet*PostawionyBudzet);
             czyWygrana=1;

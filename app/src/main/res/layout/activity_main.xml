@@ -24,4 +24,12 @@
         android:layout_height="wrap_content"
         android:backgroundTint="#A62424"
         android:text="Graj" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="200dp"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#A62424"
+        android:text="Jak grać?" />
 </LinearLayout>

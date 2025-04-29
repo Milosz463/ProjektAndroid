@@ -66,7 +66,7 @@ public class Stolik {
         return kolorRiver;
     }
     public void losujKartyNaStol(){
-        taliaKart.DodajKarty();
+        taliaKart.dodajKarty();
         for(Repozytorium repozytorium:taliaKart.listaKart){
             listaKartNaStole.add(repozytorium.getNrKarty());
         }
@@ -78,7 +78,7 @@ public class Stolik {
 
     }
     public void dodajWartosciKartNaStol(){
-        taliaKart.DodajKarty();
+        taliaKart.dodajKarty();
         for(Repozytorium repozytorium:taliaKart.listaKart){
             listaWartosciKartNaStole.add(repozytorium.getWartoscKarty());
             listaKolorowKartNaStole.add(repozytorium.getKolorKarty());

@@ -42,7 +42,7 @@ public class Krupier {
 
     public void losujKartyDlaKrupiera(){
         taliaKart=new TaliaKart();
-        taliaKart.DodajKarty();
+        taliaKart.dodajKarty();
         for(Repozytorium kartyKrupiera: taliaKart.listaKart){
             listaZtaliaKrupiera.add(kartyKrupiera.getNrKarty());
         }
@@ -51,7 +51,7 @@ public class Krupier {
     }
     public void dodajWartosciKartKrupiera(){
         taliaKart=new TaliaKart();
-        taliaKart.DodajKarty();
+        taliaKart.dodajKarty();
         for(Repozytorium wartosciK:taliaKart.listaKart){
             listaWartosciKartKrupiera.add(wartosciK.getWartoscKarty());
             listaKolorowKartKrupiera.add(wartosciK.getKolorKarty());

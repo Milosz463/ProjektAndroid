@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class TaliaKart {
     ArrayList<Repozytorium> listaKart=new ArrayList<>();
-    public void DodajKarty(){
+    public void dodajKarty(){
 
         listaKart.add(new Repozytorium(R.drawable.dwac,2,20));
         listaKart.add(new Repozytorium(R.drawable.dwad,2,30));

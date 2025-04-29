@@ -20,7 +20,6 @@ public class DzialanieGryActivity2 extends AppCompatActivity {
 ActivityDzialanieGry2Binding binding;
 
 int etapRozdania=0;
-int PostawionyBudzet;
 CountDownTimer countDownTimer;
 boolean czyRaiseZostanieWykonany=false;
 boolean czyGraczJuzWylosowalKarty =false;
@@ -58,12 +57,12 @@ Przyciski przyciski=new Przyciski();
                         przyciski.StawPieniadze();
                         binding.textView.setText("Budżet: "+String.valueOf(przyciski.getBudzet()));
                         binding.textView4.setText("- "+String.valueOf(przyciski.getPostawionyBudzet()));
-                        LosujKartyDlaGracza();
-                        LosujKartyDlaKrupiera();
-                        Flop();
-                        UkryjPrzyciski();
+                        losujKartyDlaGracza();
+                        losujKartyDlaKrupiera();
+                        flop();
+                        ukryjPrzyciski();
                         if(!czyRaiseZostanieWykonany) {
-                            Raise();
+                            raise();
                             czyRaiseZostanieWykonany=true;
                         }
                     }
@@ -77,12 +76,12 @@ Przyciski przyciski=new Przyciski();
                         przyciski.StawPieniadze();
                         binding.textView.setText("Budżet: "+String.valueOf(przyciski.getBudzet()));
                         binding.textView4.setText("- "+String.valueOf(przyciski.getPostawionyBudzet()));
-                        LosujKartyDlaGracza();
-                        LosujKartyDlaKrupiera();
-                        Flop();
-                        UkryjPrzyciski();
+                        losujKartyDlaGracza();
+                        losujKartyDlaKrupiera();
+                        flop();
+                        ukryjPrzyciski();
                         if(!czyRaiseZostanieWykonany) {
-                            Raise();
+                            raise();
                             czyRaiseZostanieWykonany=true;
                         }
                     }
@@ -96,12 +95,12 @@ Przyciski przyciski=new Przyciski();
                         przyciski.StawPieniadze();
                         binding.textView.setText("Budżet: "+String.valueOf(przyciski.getBudzet()));
                         binding.textView4.setText("- "+String.valueOf(przyciski.getPostawionyBudzet()));
-                        LosujKartyDlaGracza();
-                        LosujKartyDlaKrupiera();
-                        Flop();
-                        UkryjPrzyciski();
+                        losujKartyDlaGracza();
+                        losujKartyDlaKrupiera();
+                        flop();
+                        ukryjPrzyciski();
                         if(!czyRaiseZostanieWykonany) {
-                            Raise();
+                            raise();
                             czyRaiseZostanieWykonany=true;
                         }
                     }
@@ -115,12 +114,12 @@ Przyciski przyciski=new Przyciski();
                         przyciski.StawPieniadze();
                         binding.textView.setText("Budżet: "+String.valueOf(przyciski.getBudzet()));
                         binding.textView4.setText("- "+String.valueOf(przyciski.getPostawionyBudzet()));
-                        LosujKartyDlaGracza();
-                        LosujKartyDlaKrupiera();
-                        Flop();
-                        UkryjPrzyciski();
+                        losujKartyDlaGracza();
+                        losujKartyDlaKrupiera();
+                        flop();
+                        ukryjPrzyciski();
                         if(!czyRaiseZostanieWykonany) {
-                            Raise();
+                            raise();
                             czyRaiseZostanieWykonany=true;
                         }
                     }
@@ -130,10 +129,10 @@ Przyciski przyciski=new Przyciski();
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Raise();
+                        raise();
                         etapRozdania++;
                         if(etapRozdania% 2 == 0){
-                            River();
+                            river();
                             binding.imageView10.setImageResource(krupier.wylosowaneKartyKrupiera.get(0));
                             binding.imageView11.setImageResource(krupier.wylosowaneKartyKrupiera.get(1));
                             przyciski.SprawdzWyniki();
@@ -147,9 +146,10 @@ Przyciski przyciski=new Przyciski();
                             }else{
                                 binding.textView4.setText("Draw!");
                             }
+                            binding.button4.setVisibility(VISIBLE);
                         }else {
-                            Turn();
-                            UkryjPrzyciski();
+                            turn();
+                            ukryjPrzyciski();
                         };
                     }
                 }
@@ -159,12 +159,39 @@ Przyciski przyciski=new Przyciski();
                     @Override
                     public void onClick(View v) {
 
-                        PokazPrzyciski();
+                        pokazPrzyciski();
+                    }
+                }
+        );
+        binding.button4.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        binding.button4.setVisibility(INVISIBLE);
+                        binding.imageView3.setImageResource(R.drawable.odwortkarty);
+                        binding.imageView4.setImageResource(R.drawable.odwortkarty);
+                        binding.imageView5.setImageResource(R.drawable.odwortkarty);
+                        binding.imageView6.setImageResource(R.drawable.odwortkarty);
+                        binding.imageView.setImageResource(R.drawable.odwortkarty);
+                        binding.imageView10.setImageResource(R.drawable.odwortkarty);
+                        binding.imageView11.setImageResource(R.drawable.odwortkarty);
+                        binding.imageView8.setImageResource(R.drawable.odwortkarty);
+                        binding.imageView9.setImageResource(R.drawable.odwortkarty);
+
+                        pokazPrzyciski();
+
+                        czyRaiseZostanieWykonany=false;
+                        czyGraczJuzWylosowalKarty=false;
+                        czyKrupierJuzWylosowalKarty=false;
+                        czyWylosowanoKartyNaStol=false;
+
+                        etapRozdania=0;
+
                     }
                 }
         );
     }
-    public void UkryjPrzyciski(){
+    public void ukryjPrzyciski(){
         binding.button2.setVisibility(INVISIBLE);
         binding.button3.setVisibility(INVISIBLE);
         binding.button8.setVisibility(INVISIBLE);
@@ -172,13 +199,13 @@ Przyciski przyciski=new Przyciski();
         binding.button10.setVisibility(INVISIBLE);
         binding.button11.setVisibility(INVISIBLE);
     }
-    public void PokazPrzyciski(){
+    public void pokazPrzyciski(){
         binding.button8.setVisibility(VISIBLE);
         binding.button9.setVisibility(VISIBLE);
         binding.button10.setVisibility(VISIBLE);
         binding.button11.setVisibility(VISIBLE);
     }
-    public void LosujKartyDlaGracza(){
+    public void losujKartyDlaGracza(){
         if(!czyGraczJuzWylosowalKarty) {
             gracz = new Gracz();
             gracz.losujKartyDlaGracza();
@@ -187,14 +214,14 @@ Przyciski przyciski=new Przyciski();
             binding.imageView9.setImageResource(gracz.wylosowaneKartyGracza.get(1));
         }
     }
-    public void LosujKartyDlaKrupiera(){
+    public void losujKartyDlaKrupiera(){
         if(!czyKrupierJuzWylosowalKarty){
             krupier=new Krupier();
             krupier.losujKartyDlaKrupiera();
             czyKrupierJuzWylosowalKarty =true;
         }
     }
-    public void Flop(){
+    public void flop(){
         if(!czyWylosowanoKartyNaStol) {
             stolik=new Stolik();
             stolik.losujKartyNaStol();
@@ -204,13 +231,13 @@ Przyciski przyciski=new Przyciski();
             binding.imageView4.setImageResource(stolik.listaWylosowanychKartNaStol.get(2));
         }
     }
-    public void Turn(){
+    public void turn(){
         binding.imageView5.setImageResource(stolik.listaWylosowanychKartNaStol.get(3));
     }
-    public void River(){
+    public void river(){
         binding.imageView6.setImageResource(stolik.listaWylosowanychKartNaStol.get(4));;
     }
-    public void Raise(){
+    public void raise(){
         if(etapRozdania<1) {
             countDownTimer = new CountDownTimer(5000, 10000) {
                 @Override
@@ -220,13 +247,13 @@ Przyciski przyciski=new Przyciski();
 
                 @Override
                 public void onFinish() {
-                    UkryjPrzyciski();
+                    ukryjPrzyciski();
                     binding.button2.setVisibility(VISIBLE);
                 }
             };
             countDownTimer.start();
         }else{
-            UkryjPrzyciski();
+            ukryjPrzyciski();
         }
     }
 

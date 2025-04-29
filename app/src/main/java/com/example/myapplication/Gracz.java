@@ -42,7 +42,7 @@ public class Gracz {
 
     public void losujKartyDlaGracza(){
         taliaKart=new TaliaKart();
-        taliaKart.DodajKarty();
+        taliaKart.dodajKarty();
         for(Repozytorium kartyGracza:taliaKart.listaKart) {
             listaZTaliaGracza.add(kartyGracza.getNrKarty());
         }
@@ -51,7 +51,7 @@ public class Gracz {
     }
     public void dodajWartosciKartGracza(){
         taliaKart=new TaliaKart();
-        taliaKart.DodajKarty();
+        taliaKart.dodajKarty();
         for(Repozytorium wartosciG:taliaKart.listaKart){
             listaWartosciKartGracza.add(wartosciG.getWartoscKarty());
             listaKolorowKartGracza.add(wartosciG.getKolorKarty());

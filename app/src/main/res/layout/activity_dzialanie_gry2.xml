@@ -90,8 +90,8 @@
             android:layout_width="wrap_content"
             android:layout_height="120dp"
             android:layout_weight="1"
+            android:background="@drawable/ramka"
             android:padding="10dp"
-           android:background="@drawable/ramka"
             app:srcCompat="@drawable/odwortkarty" />
 
         <ImageView
@@ -240,5 +240,13 @@
             android:backgroundTint="@color/black"
             android:text="25" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:backgroundTint="#A62424"
+        android:layout_height="wrap_content"
+        android:text="Graj ponownie" />
 
 </LinearLayout>
