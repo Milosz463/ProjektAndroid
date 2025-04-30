@@ -12,7 +12,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.myapplication.databinding.ActivityMainBinding;
 
- public class StronaTytulowaActivity extends AppCompatActivity {
+ public class MainActivity extends AppCompatActivity {
 ActivityMainBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,7 @@ ActivityMainBinding binding;
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent=new Intent(StronaTytulowaActivity.this,DzialanieGryActivity2.class);
+                        Intent intent=new Intent(MainActivity.this,DzialanieGryActivity2.class);
                         startActivity(intent);
                     }
                 }
@@ -41,7 +41,7 @@ ActivityMainBinding binding;
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent=new Intent(StronaTytulowaActivity.this,PoradnikActivity.class);
+                        Intent intent=new Intent(MainActivity.this,PoradnikActivity.class);
                         startActivity(intent);
                     }
                 }

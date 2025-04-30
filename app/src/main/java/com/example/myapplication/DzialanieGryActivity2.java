@@ -48,6 +48,7 @@ Przyciski przyciski=new Przyciski();
 
         binding.button2.setVisibility(INVISIBLE);
         binding.button3.setVisibility(INVISIBLE);
+        binding.button4.setVisibility(INVISIBLE);
 
         binding.button8.setOnClickListener(
                 new View.OnClickListener() {
@@ -190,6 +191,8 @@ Przyciski przyciski=new Przyciski();
                     }
                 }
         );
+
+
     }
     public void ukryjPrzyciski(){
         binding.button2.setVisibility(INVISIBLE);
